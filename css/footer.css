@@ -1,0 +1,27 @@
+footer{
+    display: flex;
+    justify-content: center;
+}
+.footer-content{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+.footer-content hr{
+    width: 100%;
+}
+.footer-content p a{
+    color: #737373;;
+    text-decoration: none;
+    font-size: 14px;
+    margin: 7px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.footer-content p{
+    padding: 10px;
+}
+#more-lang{
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+}

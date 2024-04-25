@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Facebook - log in or sign up</title>
+    <link rel="stylesheet" href="css/footer.css" />
+  </head>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      /* height: 100%; */
+    }
+    .main-container {
+      /* border: 1px solid black; */
+      height: 700px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f2f5;
+    }
+    .outer-container {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      height: 500px;
+      width: 70%;
+      align-items: center;
+    }
+    .inner-left-container {
+      width: 45%;
+      margin: 0px 10px;
+    }
+    .inner-left-container img {
+      width: 250px;
+    }
+
+    .inner-left-container p {
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      font-size: 24px;
+      /* font-weight: 500; */
+    }
+    .inner-right-container {
+      width: 35%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .form-box {
+      background-color: white;
+      /* border: 1px solid black; */
+      border-radius: 8px;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      box-shadow: 0px 0px 10px 5px rgb(194, 194, 194);
+    }
+    .form-box form {
+      display: flex;
+      flex-direction: column;
+      /* align-items: center; */
+      padding: 5px;
+      width: 100%;
+    }
+    .form-box form input {
+      font-size: 20px;
+      padding: 10px;
+      margin: 5px 10px;
+      /* width: 95%; */
+      border: none;
+      border: 1px solid rgb(223, 223, 223);
+      border-radius: 5px;
+    }
+    .form-box form input:focus {
+      outline: none;
+      border: 1px solid #1877f2;
+    }
+    #login-btn {
+      /* width: 200px; */
+      background-color: #1877f2;
+      color: white;
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      border: none;
+      border-radius: 5px;
+      font-size: 23px;
+      font-weight: 300;
+    }
+    .form-box a {
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      text-decoration: none;
+      color: #1877f2;
+      font-size: 18px;
+      margin: 5px;
+    }
+    .form-box hr {
+      width: 100%;
+      margin: 10px 0px;
+      border: 1px solid rgb(223, 223, 223);
+    }
+    #new-account-btn {
+      background-color: #42b72a;
+      color: white;
+      /* font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif; */
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: 550;
+      padding: 10px;
+      margin: 10px;
+    }
+
+    .inner-right-container p {
+      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif;
+      color: black;
+      margin: 10px;
+    }
+    .inner-right-container p a {
+      text-decoration: none;
+      font-weight: 700;
+      color: black;
+    }
+
+    /* sign up */
+    .signup {
+      /* border: 1px solid black; */
+      display: none;
+      position: fixed;
+      top: 20%;
+      left: 35%;
+      background-color: white;
+      border-radius: 10px;
+      padding: 10px;
+      width: 400px;
+    }
+    .signup form {
+      display: flex;
+      flex-direction: column;
+    }
+    .signup form h1 {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 30px;
+      margin: 5px;
+    }
+    .signup form h2 {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      margin: 5px;
+    }
+    .signup form p {
+      font-family: Arial, Helvetica, sans-serif;
+      font-weight: lighter;
+      font-size: 12px;
+      margin: 5px;
+      color:grey;
+    }
+    .signup form hr {
+      border: 1px solid rgb(223, 223, 223);
+      margin: 15px 0px;
+    }
+    .signup form input {
+      font-size: 15px;
+      padding: 10px 10px;
+      background-color: #f0f2f5;
+      border: 1px solid rgb(223, 223, 223);
+      border-radius: 5px;
+      margin: 5px;
+    }
+    .signup form input:focus {
+      outline: none;
+      border: 1px solid #1877f2;
+    }
+    .firstname-surname {
+      display: flex;
+      flex-direction: row;
+    }
+    .firstname-surname input {
+      width: 100%;
+    }
+    .signup form p a {
+      text-decoration: none;
+      color: #1877f2;
+    }
+    .signup form #signup-btn {
+      display: block;
+      margin: auto;
+      background-color: #42b72a;
+      color: white;
+      /* font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+        sans-serif; */
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: 550;
+      padding: 10px;
+      width: 200px;
+    }
+
+    #signup-close-btn{
+        position: absolute;
+        height: 50px;
+        width: 50px;
+        right: 10px;
+        font-size: 40px;
+        font-weight: 500;
+        border: none;
+        background-color: white;
+        color: gray;
+        font-family: Arial, Helvetica, sans-serif;
+
+    }
+  </style>
+  <body>
+    <div class="main-container" id="main-container">
+      <div class="outer-container">
+        <div class="inner-left-container">
+          <img src="images/facebook-logo.png" alt="facebook logo" />
+          <p>
+            Facebook helps you connect and share with the people in your life.
+          </p>
+        </div>
+        <div class="inner-right-container">
+          <div class="form-box">
+            <form action="/login" method="post">
+              <input
+                type="text"
+                name="usermail"
+                placeholder="Email address"
+              />
+              <input
+                type="password"
+                name="userpassword"
+                placeholder="Password"
+              />
+              <input type="submit" value="Log In" id="login-btn" />
+            </form>
+            <a href="/forgotpassword.html">Forgotten Password?</a>
+            <hr />
+            <button id="new-account-btn" onclick="createnew_btn()">Create New Account</button>
+          </div>
+          <p>
+            <a href="#">Create a Page</a> for a celebrity, brand or business.
+          </p>
+        </div>
+      </div>
+    </div>
+    <footer id="footer">
+      <div class="footer-content">
+        <p>
+          <a href="#">English (UK)</a>
+          <a href="#">हिन्दी</a>
+          <a href="#">मराठी</a>
+          <a href="#">اردو</a>
+          <a href="#">ਪੰਜਾਬੀ</a>
+          <a href="#">বাংলা </a>
+          <a href="#">ગુજરાતી </a>
+          <a href="#">தமிழ் </a>
+          <a href="#">తెలుగు </a>
+          <a href="#">മലയാളം </a>
+          <a href="#">ಕನ್ನಡ </a>
+          <button id="more-lang">+</button>
+        </p>
+        <hr />
+        <p>
+          <a href="#">Sign Up</a>
+          <a href="#">Log In</a>
+          <a href="#">Messenger</a>
+          <a href="#">Facebook Lite</a>
+          <a href="#">Watch</a>
+          <a href="#">Places</a>
+          <a href="#">Games</a>
+          <a href="#">Marketplace</a>
+          <a href="#">Facebook Pay</a>
+          <a href="#">Oculus</a>
+          <a href="#">Portal</a>
+          <a href="#">Instagram</a>
+          <a href="#">Bulletin</a>
+          <a href="#">Local</a>
+          <a href="#">Fundraisers</a>
+          <a href="#">Services</a>
+          <a href="#">Voting</a>
+          <a href="#">Information</a>
+          <a href="#">Centre</a>
+          <a href="#">Groups</a>
+          <a href="#">About</a>
+          <a href="#">Create ad</a>
+          <a href="#">Create Page</a>
+          <a href="#">Developers</a>
+          <a href="#">Careers</a>
+          <a href="#">Privacy</a>
+          <a href="#">Cookies</a>
+          <a href="#">AdChoices</a>
+          <a href="#">Terms</a>
+          <a href="#">Help</a>
+          <a href="#">Settings</a>
+          <a href="#">Activity log</a>
+        </p>
+      </div>
+    </footer>
+
+    <div class="signup" id="signup">
+      <form action="/register" method="post">
+        <h1>Sign Up</h1>
+        <h2>It's quick and easy</h2>
+        <hr />
+        <div class="firstname-surname">
+          <input type="text" name="firstname" placeholder="First name" id="" />
+          <input type="text" name="surname" placeholder="Surname" id="" />
+        </div>
+        <input
+          type="text"
+          name="usermail"
+          placeholder="Email address"
+          id=""
+        />
+        <input
+          type="password"
+          name="userpassword"
+          placeholder="New password"
+          id=""
+        />
+        <div class="dob">
+          <p>Date of birth</p>
+          <input type="date" name="userdob" placeholder="Date of birth" id="" />
+        </div>
+        <div class="gender">
+          <p>Gender</p>
+          <input type="text" name="usergender" placeholder="Gender" id="" />
+        </div>
+        <p>
+          By clicking Sign Up, you agree to our <a href="#">Terms</a> ,
+          <a href="#">Data Policy</a> and <a href="#">Cookie Policy</a> . You may
+          receive SMS notifications from us and can opt out at any time.
+        </p>
+        <input type="submit" value="Sign Up" id="signup-btn" />
+      </form>
+      <button id="signup-close-btn" onclick="signup_close_btn()">x</button>
+    </div>
+  </body>
+  <script>
+      function createnew_btn(){
+          document.getElementById('signup').style.display = "flex";
+          document.getElementById('main-container').style.filter= "blur(38px)";
+          document.getElementById('footer').style.filter= "blur(38px)";
+          
+      }
+      function signup_close_btn(){
+        document.getElementById('signup').style.display = "none"
+        document.getElementById('main-container').style.filter= "blur(0px)";
+          document.getElementById('footer').style.filter= "blur(0px)";
+      }
+  </script>
+</html>
